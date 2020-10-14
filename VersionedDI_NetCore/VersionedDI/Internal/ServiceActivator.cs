@@ -93,7 +93,7 @@ namespace VersionedDI.Internal
 
         private IEnumerable<ConstructorInfo> GetConstructorsForVersionedService(Type implementationType)
         {
-            IEnumerable<ConstructorInfo> implementationConstructors = implementationType.GetConstructors();
+            IEnumerable<ConstructorInfo> implementationConstructors = implementationType.GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
             var decoratedConstructors = implementationConstructors
                 .Where(c => c.GetCustomAttribute<VersionedServiceConstructorAttribute>() != null)
@@ -121,7 +121,7 @@ namespace VersionedDI.Internal
 
         private IEnumerable<ConstructorInfo> GetConstructorsForService(Type implementationType)
         {
-            IEnumerable<ConstructorInfo> implementationConstructors = implementationType.GetConstructors();
+            IEnumerable<ConstructorInfo> implementationConstructors = implementationType.GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
             var ctorCount = implementationConstructors.Count();
             if (ctorCount == 0)
