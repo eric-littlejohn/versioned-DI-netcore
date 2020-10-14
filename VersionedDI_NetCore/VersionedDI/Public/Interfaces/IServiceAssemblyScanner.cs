@@ -15,6 +15,6 @@ namespace VersionedDI
         /// </summary>
         /// <param name="assembly">The Assembly to scan.</param>
         /// <returns>The <see cref="ServiceDescriptor"/>s for the decorated services found.</returns>
-        IEnumerable<ServiceDescriptor> ScanAssemblyForDecoratedVersionedServices(Assembly assembly, ref IEnumerable<ServiceDescriptor> existingServices);
+        IEnumerable<ServiceDescriptor> ScanAssemblyForDecoratedVersionedServices(Assembly assembly, ref IServiceCollection existingServices);
     }
 }

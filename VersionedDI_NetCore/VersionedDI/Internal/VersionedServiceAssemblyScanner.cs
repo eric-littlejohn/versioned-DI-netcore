@@ -8,7 +8,7 @@ namespace VersionedDI.Internal
 {
     internal class VersionedServiceAssemblyScanner : IServiceAssemblyScanner
     {
-        public IEnumerable<ServiceDescriptor> ScanAssemblyForDecoratedVersionedServices(Assembly assembly, ref IEnumerable<ServiceDescriptor> existingServices)
+        public IEnumerable<ServiceDescriptor> ScanAssemblyForDecoratedVersionedServices(Assembly assembly, ref IServiceCollection existingServices)
         {
             var newServices = new List<ServiceDescriptor>();
             var versionedServiceTypesInAssembly = assembly
