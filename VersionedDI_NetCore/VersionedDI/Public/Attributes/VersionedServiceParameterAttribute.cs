@@ -34,18 +34,18 @@ namespace VersionedDI
     public class VersionedServiceParameterAttribute : Attribute
     {
         /// <summary>
-        /// The version the decorated service supports.
+        /// The version the of the service being requested.
         /// </summary>
-        public string SupportedVersion { get; }
+        public string RequestedVersion { get; }
 
-        /// <summary>
-        /// Indicates whether the parameter decorated is required to be injected with a value.
-        /// </summary>
-        public bool Required { get; set; } 
-
-        public VersionedServiceParameterAttribute(string supportedVersion)
+        public VersionedServiceParameterAttribute(string requestedVersion)
         { 
-            SupportedVersion = supportedVersion;
+            if (String.IsNullOrEmpty(requestedVersion))
+            {
+                throw new ArgumentException($"A value of '{requestedVersion ?? "NULL"}' is not supported as a version.");
+            }
+
+            RequestedVersion = requestedVersion;
         }
     }
 }
